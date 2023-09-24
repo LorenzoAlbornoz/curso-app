@@ -3,7 +3,7 @@ import { axiosInstance } from '../../config/axiosInstance'
 import { useEffect, useState } from 'react'
 
 
-const FormCreacion = () => {
+const FormCreacion = ({getCourses}) => {
     const [categories, setCategories] = useState([])
     const [imgFile, setImgFile] = useState([])
     const [formDatos, setFormDatos] = useState({
@@ -55,6 +55,9 @@ const FormCreacion = () => {
             console.log(resp.data)
         } catch (error) {
             console.log(error)
+            // siempre al final ejecuta esta funcion y actualiza
+        }finally{
+            getCourses()
         }
     }
 
